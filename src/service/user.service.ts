@@ -18,11 +18,9 @@ export class UserService{
     const hashedPassword = await bcryptjs.hash(data.password, 10);
     data.password = hashedPassword;
 
-    const usernameCheck = await userRepository.getUserByUsername(data.username);
+ 
 
-    if(usernameCheck){
-      throw new HttpError(403,"Username already in use")
-    }
+
 
     const newUser = await userRepository.createUser(data);
 
