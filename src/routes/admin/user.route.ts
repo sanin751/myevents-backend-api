@@ -9,9 +9,9 @@ const router = Router();
 router.use(authorizedMiddleware); // apply all with middleware
 router.use(adminOnlyMiddleware); // apply all with middleware
 
-router.post("/", uploads.single("image"), adminUserController.createUser);
+router.post("/", uploads.single("profile"), adminUserController.createUser);
 router.get("/", adminUserController.getAllUsers);
-router.put("/:id", uploads.single("image"), adminUserController.updateUser);
+router.put("/:id", uploads.single("profile"), adminUserController.updateUser);
 router.delete("/:id", adminUserController.deleteUser);
 router.get("/:id", adminUserController.getUserById);
 
