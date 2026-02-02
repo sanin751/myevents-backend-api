@@ -6,6 +6,7 @@ import cors from "cors";
 import { PORT } from "./config/index";
 
 import authRouter from "./routes/auth.route";
+import adminRouter from "./routes/admin/user.route";
 import { connectDatabase } from "./database/mongodb";
 import path from "path";
 
@@ -20,6 +21,7 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRouter);
+app.use('/api/admin', adminRouter);
 
 async function startServer() {
   await connectDatabase();
