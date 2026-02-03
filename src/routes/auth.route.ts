@@ -8,6 +8,6 @@ const router = Router();
 
 router.post("/login", authController.login);
 router.post("/register", authController.register);
-router.patch("/update", authorizedMiddleware, uploads.single("profile"), authController.updateUser);
+router.put("/update", authorizedMiddleware, uploads.single("profile"), authController.updateUser);
 router.get("/users/:id", authController.getUserById);
 export default router;
