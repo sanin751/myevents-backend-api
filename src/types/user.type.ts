@@ -1,3 +1,4 @@
+import { profile } from "node:console";
 import z from "zod";
 
 export const UserSchema = z.object({
@@ -5,6 +6,7 @@ export const UserSchema = z.object({
   password: z.string().min(8),
   firstName : z.string().optional(),
   lastName : z.string().optional(),
+  profile : z.string().optional(),
   role : z.enum(["user", "admin"]).default("user")
 });
 

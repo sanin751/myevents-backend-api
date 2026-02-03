@@ -7,6 +7,7 @@ const UserSchema: Schema = new Schema<UserType>(
     lastName: {type: String},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
+    profile: {type: String},
     role: {
       type: String, 
       enum: ["user", "admin"],
