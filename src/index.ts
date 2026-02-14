@@ -23,7 +23,7 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRouter);
-app.use('/api/admin', adminRouter);
+app.use('/api/admin/users', adminRouter);
 
 async function startServer() {
   await connectDatabase();
