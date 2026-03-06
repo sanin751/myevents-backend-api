@@ -45,6 +45,22 @@ export class AdminUserController {
         }
     }
 
+      async getAllBanquets(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { page, size, search }: QueryParams = req.query;
+            const { banquets, pagination } = await adminUserService.getAllBanquets(
+                page, size, search
+            );
+            return res.status(200).json(
+                { success: true, data: banquets, pagination: pagination, message: "All Banquets Retrieved" }
+            );
+        } catch (error: Error | any) {
+            return res.status(error.statusCode ?? 500).json(
+                { success: false, message: error.message || "Internal Server Error" }
+            );
+        }
+    }
+
     async updateUser(req: Request, res: Response, next: NextFunction) {
         try {
             const userId = req.params.id;
