@@ -2,8 +2,10 @@ import { CreateUserDTO, LoginUserDTO, UpdateUserDTO } from "../../dtos/user.dto"
 import { UserRepository } from "../../repository/user.repository";
 import  bcryptjs from "bcryptjs"
 import { HttpError } from "../../error/http-error";
+import { BanquetRepository } from "../../repository/banquet.repository";
 
 let userRepository = new UserRepository();
+let banquetRepository = new BanquetRepository();
 
 export class AdminUserService {
     async createUser(data: CreateUserDTO){
@@ -34,6 +36,23 @@ export class AdminUserService {
             totalPages: Math.ceil(total / pageSize)
         }
         return {users, pagination};
+    }
+
+     async getAllBanquets(
+        page?: string, size?: string, search?: string
+    ){
+        const pageNumber = page ? parseInt(page) : 1;
+        const pageSize = size ? parseInt(size) : 10;
+        const {banquets, total} = await banquetRepository.getAllBanquets(
+            pageNumber, pageSize, search
+        );
+        const pagination = {
+            page: pageNumber,
+            size: pageSize,
+            totalItems: total,
+            totalPages: Math.ceil(total / pageSize)
+        }
+        return {banquets, pagination};
     }
 
     async deleteUser(id: string){

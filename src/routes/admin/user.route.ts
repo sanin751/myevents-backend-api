@@ -11,6 +11,7 @@ router.use(adminOnlyMiddleware); // apply all with middleware
 
 router.post("/users", uploads.single("profile"), adminUserController.createUser);
 router.get("/", adminUserController.getAllUsers);
+router.get("/banquets", adminUserController.getAllBanquets);
 router.put("/:id", uploads.single("profile"), adminUserController.updateUser);
 router.delete("/:id", adminUserController.deleteUser);
 router.get("/:id", adminUserController.getUserById);

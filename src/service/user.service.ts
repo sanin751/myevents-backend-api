@@ -25,7 +25,7 @@ export class UserService{
 
   async loginUser(data: LoginUserDTO){
     const user = await userRepository.getUserByEmail(data.email);
-    console.log("Servidce", user);
+    console.log("Service", user);
     if(!user) {
       throw new HttpError(404,"No user found")
     }
